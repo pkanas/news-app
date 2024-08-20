@@ -1,0 +1,30 @@
+<div class="filters">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Search news..." (keyup)="onFilterChange()">
+    <input type="date" [(ngModel)]="fromDate" (change)="onFilterChange()">
+    <input type="date" [(ngModel)]="toDate" (change)="onFilterChange()">
+  </div>
+    
+  @if (!news.length) {
+  <div  class="no-data">
+    <img src="https://img.freepik.com/free-vector/hand-drawn-no-data-concept_52683-127823.jpg?w=1380&t=st=1724146595~exp=1724147195~hmac=590a297dc4d66f9bd11c6d60e9b27d28cb71cca3e443338d657eeeeeae4c7d05" alt="No Data Icon" class="no-data-icon">
+    <p class="no-data-text">No data available</p>
+  </div>
+}
+
+  @defer () {
+    @if (!errorMessage) {
+  <div class="news-cards">
+    <div *ngFor="let article of news" class="news-card" (click)="viewDetails(article)">
+        @if (article.urlToImage) {
+            <img [src]="article.urlToImage" alt="News Image">
+        } @else {
+            <img [src]="'https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=1060'" alt="News Image">
+        }
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.description }}</p>
+      <span>{{ article.author }}</span>
+    </div>
+</div>
+}
+}
+  

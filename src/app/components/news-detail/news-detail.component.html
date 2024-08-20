@@ -1,0 +1,15 @@
+<div class="news-detail">
+    <button class="back-button" (click)="goBack()">Back</button>
+    @defer () {
+        @if (article.urlToImage == "null") {
+            <img [src]="'https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=1060'" alt="News Image">
+        } @else {
+            <img [src]="article.urlToImage" alt="News Image">
+        }
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <span>By {{ article.author }} | {{ article.publishedAt }}</span>
+    }
+ 
+  </div>
+  
